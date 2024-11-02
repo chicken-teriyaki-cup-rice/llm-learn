@@ -1,51 +1,80 @@
-# React + TypeScript + Vite
+Interactive visualization of how Large Language Models process text, built with React and shadcn/ui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://llm-learn.netlify.app/
 
-Currently, two official plugins are available:
+# LLM Processing Visualizer 🤖
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+An interactive React + Vite demo that visualizes how Large Language Models process text, from tokens to output. See the magic of transformers unfold step by step!
 
-## Expanding the ESLint configuration
+https://github.com/user-attachments/assets/54ff891a-be28-4abb-b096-3b79df685a0c
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ✨ Features
 
-- Configure the top-level `parserOptions` property like this:
+- 🔄 Interactive step-by-step visualization of LLM processing:
+  - Tokenization
+  - Vector Embedding
+  - Attention Mechanism
+  - Feed Forward Networks
+  - Output Generation
+- 💅 Modern UI with shadcn/ui components
+- 🎨 Clean animations and transitions
+- 📱 Responsive design
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Built With
+
+- React + Vite
+- Tailwind CSS
+- shadcn/ui
+- Lucide Icons
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/chicken-teriyaki-cup-rice/llm-learn
+
+# Install dependencies
+cd llm-learn
+npm install
+
+# Add shadcn/ui components
+npx shadcn-ui@latest add card button input
+
+
+# Start the development server
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📖 Usage
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Enter any text in the input field
+2. Click "Next Step" to walk through each phase of LLM processing
+3. See visual representations of how LLMs handle text at each stage
+4. Click "Generate Output" in the final step to see simulated results
+5. Use "Reset" to start over
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# llm-learn
+## 🎓 Educational Purpose
+
+This project aims to demystify how Large Language Models work by providing a simplified but informative visualization of their text processing pipeline. Perfect for:
+
+- Students learning about NLP
+- Developers new to LLMs
+- Teaching materials about AI/ML
+- Technical demonstrations
+
+## 🤝 Contributing
+
+Contributions welcome! Feel free to:
+
+- Add more visualization features
+- Improve the simulations
+- Enhance the UI/UX
+- Fix bugs or improve performance
+
+## 📝 License
+
+MIT
+
+---
+
+_Note: This is an educational demonstration and uses simplified representations of LLM processes. For accurate, production-level LLM implementations, please refer to established frameworks and libraries._
