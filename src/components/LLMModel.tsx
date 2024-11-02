@@ -141,10 +141,11 @@ const LLMModel: React.FC = () => {
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="text-xl sm:text-2xl">
-            Enhanced LLM Interactive Model
+            Large Language Model Simulator
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            Explore how LLMs process and generate text
+            Step through the core processes of how an LLM transforms text input
+            into output"
           </CardDescription>
         </CardHeader>
         <CardContent>
