@@ -31,9 +31,9 @@ const LLMModel: React.FC = () => {
         "The input text is broken down into tokens (words or subwords). This process converts the raw text into a format the model can understand.",
       example:
         input.length > 0 ? (
-          <div>
+          <div className="flex flex-wrap gap-1">
             {input.split(" ").map((word, i) => (
-              <span key={i} className="bg-blue-100 px-1 mr-1 rounded">
+              <span key={i} className="bg-blue-100 px-1 rounded text-sm">
                 {word}
               </span>
             ))}
@@ -47,7 +47,7 @@ const LLMModel: React.FC = () => {
         "Each token is converted into a numerical vector representation. This allows the model to process the text mathematically.",
       example:
         input.length > 0 ? (
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {input
               .split(" ")
               .slice(0, 4)
@@ -66,7 +66,7 @@ const LLMModel: React.FC = () => {
         "The model calculates attention scores to understand the relationships between different parts of the input.",
       example:
         input.length > 0 ? (
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {input
               .split(" ")
               .slice(0, 4)
@@ -103,7 +103,7 @@ const LLMModel: React.FC = () => {
         "The model generates output tokens based on the processed input and the temperature setting.",
       example:
         output.length > 0 ? (
-          <div className="bg-red-100 p-2 rounded">{output}</div>
+          <div className="bg-red-100 p-2 rounded break-words">{output}</div>
         ) : null,
     },
   ];
@@ -137,42 +137,57 @@ const LLMModel: React.FC = () => {
   };
 
   return (
-    <Card className="w-[500px] mx-auto">
-      <CardHeader>
-        <CardTitle>Enhanced LLM Interactive Model</CardTitle>
-        <CardDescription>
-          Explore how LLMs process and generate text
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div>
-            <label className="text-sm font-medium">Input Text:</label>
-            <Input
-              value={input}
-              onChange={handleInputChange}
-              placeholder="Enter your text here"
-            />
-          </div>
-          <div className="border p-4 rounded-md">
-            <div className="flex items-center mb-2">
-              {steps[step].icon}
-              <h3 className="text-lg font-semibold ml-2">{steps[step].name}</h3>
+    <div className="w-full max-w-2xl mx-auto px-4">
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-xl sm:text-2xl">
+            Enhanced LLM Interactive Model
+          </CardTitle>
+          <CardDescription className="text-sm sm:text-base">
+            Explore how LLMs process and generate text
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm font-medium">Input Text:</label>
+              <Input
+                value={input}
+                onChange={handleInputChange}
+                placeholder="Enter your text here"
+                className="mt-1"
+              />
             </div>
-            <p className="text-sm mb-2">{steps[step].description}</p>
-            <div className="bg-gray-100 p-2 rounded">{steps[step].example}</div>
+            <div className="border p-3 sm:p-4 rounded-md">
+              <div className="flex items-center mb-2">
+                {steps[step].icon}
+                <h3 className="text-base sm:text-lg font-semibold ml-2">
+                  {steps[step].name}
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm mb-2">
+                {steps[step].description}
+              </p>
+              <div className="bg-gray-100 p-2 rounded">
+                {steps[step].example}
+              </div>
+            </div>
           </div>
-        </div>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button onClick={handleNextStep}>
-          {step < steps.length - 1 ? "Next Step" : "Generate Output"}
-        </Button>
-        <Button variant="outline" onClick={handleReset}>
-          Reset
-        </Button>
-      </CardFooter>
-    </Card>
+        </CardContent>
+        <CardFooter className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:justify-between">
+          <Button className="w-full sm:w-auto" onClick={handleNextStep}>
+            {step < steps.length - 1 ? "Next Step" : "Generate Output"}
+          </Button>
+          <Button
+            className="w-full sm:w-auto"
+            variant="outline"
+            onClick={handleReset}
+          >
+            Reset
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
   );
 };
 
