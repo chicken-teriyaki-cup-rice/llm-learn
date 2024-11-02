@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import React, { useState } from "react";
 import {
   Card,
@@ -13,67 +11,79 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Boxes, Cpu, Network, Lightbulb, ArrowRight } from "lucide-react";
 
-const LLMModel = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [step, setStep] = useState(0);
+interface Step {
+  name: string;
+  icon: React.ReactNode;
+  description: string;
+  example: React.ReactNode | null;
+}
 
-  const steps = [
+const LLMModel: React.FC = () => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [step, setStep] = useState<number>(0);
+
+  const steps: Step[] = [
     {
       name: "Tokenization",
       icon: <Boxes />,
       description:
         "The input text is broken down into tokens (words or subwords). This process converts the raw text into a format the model can understand.",
-      example: input
-        ? input.split(" ").map((word, i) => (
-            <span key={i} className="bg-blue-100 px-1 mr-1 rounded">
-              {word}
-            </span>
-          ))
-        : null,
+      example:
+        input.length > 0 ? (
+          <div>
+            {input.split(" ").map((word, i) => (
+              <span key={i} className="bg-blue-100 px-1 mr-1 rounded">
+                {word}
+              </span>
+            ))}
+          </div>
+        ) : null,
     },
     {
       name: "Embedding",
       icon: <Cpu />,
       description:
         "Each token is converted into a numerical vector representation. This allows the model to process the text mathematically.",
-      example: (
-        <div className="grid grid-cols-4 gap-2">
-          {input
-            .split(" ")
-            .slice(0, 4)
-            .map((_, i) => (
-              <div key={i} className="bg-green-100 p-2 rounded text-xs">
-                [0.2, -0.5, 0.8, ...]
-              </div>
-            ))}
-        </div>
-      ),
+      example:
+        input.length > 0 ? (
+          <div className="grid grid-cols-4 gap-2">
+            {input
+              .split(" ")
+              .slice(0, 4)
+              .map((_, i) => (
+                <div key={i} className="bg-green-100 p-2 rounded text-xs">
+                  [0.2, -0.5, 0.8, ...]
+                </div>
+              ))}
+          </div>
+        ) : null,
     },
     {
       name: "Attention Mechanism",
       icon: <Network />,
       description:
         "The model calculates attention scores to understand the relationships between different parts of the input.",
-      example: (
-        <div className="grid grid-cols-4 gap-2">
-          {input
-            .split(" ")
-            .slice(0, 4)
-            .map((word, i) => (
-              <div
-                key={i}
-                className="bg-yellow-100 p-2 rounded text-xs flex flex-col items-center"
-              >
-                <span>{word}</span>
-                <ArrowRight className="my-1" size={16} />
-                <span className="font-bold">
-                  {(Math.random() * 0.5 + 0.5).toFixed(2)}
-                </span>
-              </div>
-            ))}
-        </div>
-      ),
+      example:
+        input.length > 0 ? (
+          <div className="grid grid-cols-4 gap-2">
+            {input
+              .split(" ")
+              .slice(0, 4)
+              .map((word, i) => (
+                <div
+                  key={i}
+                  className="bg-yellow-100 p-2 rounded text-xs flex flex-col items-center"
+                >
+                  <span>{word}</span>
+                  <ArrowRight className="my-1" size={16} />
+                  <span className="font-bold">
+                    {(Math.random() * 0.5 + 0.5).toFixed(2)}
+                  </span>
+                </div>
+              ))}
+          </div>
+        ) : null,
     },
     {
       name: "Feed Forward",
@@ -91,17 +101,18 @@ const LLMModel = () => {
       icon: <Lightbulb />,
       description:
         "The model generates output tokens based on the processed input and the temperature setting.",
-      example: output ? (
-        <div className="bg-red-100 p-2 rounded">{output}</div>
-      ) : null,
+      example:
+        output.length > 0 ? (
+          <div className="bg-red-100 p-2 rounded">{output}</div>
+        ) : null,
     },
   ];
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = (): void => {
     if (step < steps.length - 1) {
       setStep(step + 1);
     } else {
@@ -109,14 +120,13 @@ const LLMModel = () => {
     }
   };
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     setInput("");
     setOutput("");
     setStep(0);
   };
 
-  const generateOutput = (input) => {
-    // This is a simplified simulation of output generation
+  const generateOutput = (input: string): string => {
     const words = input.split(" ");
     const outputLength = Math.floor(Math.random() * 5) + words.length;
     let output = "";
