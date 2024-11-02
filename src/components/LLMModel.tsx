@@ -145,7 +145,7 @@ const LLMModel: React.FC = () => {
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
             Step through the core processes of how an LLM transforms text input
-            into output"
+            into output
           </CardDescription>
         </CardHeader>
         <CardContent>
