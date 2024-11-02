@@ -6,7 +6,11 @@ https://llm-learn.netlify.app/
 
 An interactive React + Vite demo that visualizes how Large Language Models process text, from tokens to output. See the magic of transformers unfold step by step!
 
-https://github.com/user-attachments/assets/54ff891a-be28-4abb-b096-3b79df685a0c
+
+
+https://github.com/user-attachments/assets/7865a575-ef2e-45be-8eb6-68b3c5a5f96b
+
+
 
 ## ✨ Features
 
