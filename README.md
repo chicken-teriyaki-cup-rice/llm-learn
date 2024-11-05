@@ -1,6 +1,6 @@
 # Interactive LLM Processing Visualizer
 
-Production-grade React application for visualizing Large Language Model text processing pipelines. Built with modern frontend architecture using React, Vite, and shadcn/ui components for real-time interactive demonstrations of LLM internals.
+Modern React application for visualizing Large Language Model text processing pipelines. Built with composable frontend architecture using React, Vite, and shadcn/ui components for real-time interactive demonstrations of LLM internals.
 
 <div align="center">
   <video width="100%" max-width="800px" src="https://github.com/user-attachments/assets/7865a575-ef2e-45be-8eb6-68b3c5a5f96b"></video>
