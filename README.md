@@ -16,9 +16,9 @@ flowchart TB
 
     subgraph app["React Application"]
         subgraph ui["UI Layer"]
-            input["Text Input Component\nReact + shadcn/ui"]
-            viz["Visualization Component\nWebGL + Framer Motion"]
-            controls["Control Panel\nshadcn/ui"]
+            input["Text Input Component React + shadcn/ui"]
+            viz["Visualization Component WebGL + Framer Motion"]
+            controls["Control Panel shadcn/ui"]
         end
         
         subgraph core["Core Processing"]
@@ -27,18 +27,18 @@ flowchart TB
             end
             
             subgraph pipeline["LLM Processing Pipeline"]
-                token["Tokenization\nProcessor"]
-                embed["Embedding\nProcessor"]
-                attn["Attention\nVisualizer"]
-                ffn["Feed Forward\nNetwork"]
-                gen["Output\nGenerator"]
+                token["Tokenization Processor"]
+                embed["Embedding Processor"]
+                attn["Attention Visualizer"]
+                ffn["Feed Forward Network"]
+                gen["Output Generator"]
             end
         end
 
         subgraph services["Service Layer"]
-            compute["Computation\nService"]
-            animate["Animation\nService"]
-            layout["Layout\nEngine"]
+            compute["Computation Service"]
+            animate["Animation Service"]
+            layout["Layout Engine"]
         end
     end
 
