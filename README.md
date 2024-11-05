@@ -10,48 +10,56 @@ Production-grade React application for visualizing Large Language Model text pro
 
 ```mermaid
 flowchart TB
-    subgraph user["User Interface"]
-        input["Text Input"]
-        viz["Visualization Area"]
-        controls["Step Controls"]
+    subgraph internet["Internet"]
+        client(("Client Browser"))
     end
 
-    subgraph core["Core Processing"]
-        subgraph state["Application State"]
-            store["Store\nZustand"]
+    subgraph app["React Application"]
+        subgraph ui["UI Layer"]
+            input["Text Input Component\nReact + shadcn/ui"]
+            viz["Visualization Component\nWebGL + Framer Motion"]
+            controls["Control Panel\nshadcn/ui"]
         end
         
-        subgraph processors["Processing Pipeline"]
-            token["Tokenization Engine"]
-            embed["Embedding Processor"]
-            attn["Attention Visualizer"]
-            ffn["Feed Forward Network"]
-            output["Output Generator"]
+        subgraph core["Core Processing"]
+            subgraph state["State Management"]
+                store["Zustand Store"]
+            end
+            
+            subgraph pipeline["LLM Processing Pipeline"]
+                token["Tokenization\nProcessor"]
+                embed["Embedding\nProcessor"]
+                attn["Attention\nVisualizer"]
+                ffn["Feed Forward\nNetwork"]
+                gen["Output\nGenerator"]
+            end
         end
-        
+
         subgraph services["Service Layer"]
-            animate["Animation Service"]
-            compute["Computation Service"]
-            layout["Layout Engine"]
+            compute["Computation\nService"]
+            animate["Animation\nService"]
+            layout["Layout\nEngine"]
         end
     end
 
+    client --> input
     input --> store
-    store --> processors
-    processors --> viz
+    store --> pipeline
+    pipeline --> viz
     controls --> store
     services --> viz
+    viz --> client
 
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
-    classDef user fill:#e9e9e9,stroke:#666
+    classDef internet fill:#e9e9e9,stroke:#666
+    classDef ui fill:#FFE4B5,stroke:#d49d4f
     classDef core fill:#B0E0E6,stroke:#4682B4
-    classDef state fill:#FFE4B5,stroke:#d49d4f
-    classDef process fill:#98FB98,stroke:#3CB371
+    classDef services fill:#98FB98,stroke:#3CB371
     
-    class user user
-    class core core
-    class store state
-    class processors process
+    class internet internet
+    class input,viz,controls ui
+    class store,pipeline core
+    class services services
 ```
 
 ### Key Components
